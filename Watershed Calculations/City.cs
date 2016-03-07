@@ -160,7 +160,7 @@ namespace Watershed_Calculations
             {
                 if (building.IsMitigation)
                 {
-                    mitigation = building.SoilLoss;
+                    mitigation += building.SoilLoss;
                 }
                 else
                 {
@@ -179,7 +179,7 @@ namespace Watershed_Calculations
             {
                 if (building.IsMitigation)
                 {
-                    mitigation = building.WaterUsage;
+                    mitigation += building.WaterUsage;
                 }
                 else
                 {
@@ -197,7 +197,7 @@ namespace Watershed_Calculations
             {
                 if (building.IsMitigation)
                 {
-                    mitigation = building.ImperviousSurface;
+                    mitigation += building.ImperviousSurface;
                 }
                 else
                 {
@@ -215,7 +215,7 @@ namespace Watershed_Calculations
             {
                 if (building.IsMitigation)
                 {
-                    mitigation = building.Pollution;
+                    mitigation += building.Pollution;
                 }
                 else
                 {
