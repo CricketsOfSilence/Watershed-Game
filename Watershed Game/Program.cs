@@ -27,10 +27,14 @@ namespace Watershed_Game
                 {
                     case "l":
                     case "load":
-                        if (loadFile(line[1]))
+
+                        String path = String.Join(" ", line.Skip(1));
+                        path = path.Replace("\"\"", "");
+
+                        if (loadFile(path))
                         {
                             Console.Out.WriteLine("File loaded");
-                            buildingFile = line[1];
+                            buildingFile = path;
                         }
                         else
                         {
