@@ -29,7 +29,7 @@ namespace Watershed_Game
                     case "load":
 
                         String path = String.Join(" ", line.Skip(1));
-                        path = path.Replace("\"\"", "");
+                        //path = path.Replace("\"\"", "");
 
                         if (loadFile(path))
                         {
