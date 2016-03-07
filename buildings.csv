@@ -1,0 +1,13 @@
+Name,Category,Hexes,Build Points,Impervious Surface,Pollution,Soil Loss,Water Usage,Unique
+Low Density Housing,Residential,1,2,10,5,5,5,false
+High Density Housing,Residential,1,1,5,3,3,3,false
+Water Treatment,Residential,2,1,-.05,-.2,-.05,-.05,true
+Small Farms,Agriculture,1,1,3,3,5,3,false
+Industrial Farms,Agriculture,1,2,5,5,10,5,false
+Rainwater Collection,Agriculture,2,1,-.05,-.05,-.05,-.2,true
+Factories,Industry,1,2,5,10,5,5,false
+Green Industry,Industry,1,1,3,5,3,3,false
+Green Spaces,Industry,2,1,-.2,-.05,-.05,-.05,true
+Recreation Areas,Forestry Management,1,2,3,0,0,5,false
+Protected Areas,Forestry Management,2,1,0,0,0,0,false
+Riparian Zones,Forestry Management,2,1,-.05,-.05,-.2,-.05,true
