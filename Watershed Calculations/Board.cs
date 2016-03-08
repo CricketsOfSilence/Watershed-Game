@@ -83,9 +83,9 @@ namespace Watershed_Calculations
             StringBuilder details = new StringBuilder();            
 
             details.AppendLine(city.ToString());            
-            details.AppendFormat("\n\nArgiculture Build Points: {0}", city.GetBuildPoints(Category.Agriculture));
-            details.AppendFormat("Residential Build Points: {0}", city.GetBuildPoints(Category.Residential));
-            details.AppendFormat("Industry Build Points: {0}", city.GetBuildPoints(Category.Industry));
+            details.AppendFormat("\n\nArgiculture Build Points: {0}\n", city.GetBuildPoints(Category.Agriculture));
+            details.AppendFormat("Residential Build Points: {0}\n", city.GetBuildPoints(Category.Residential));
+            details.AppendFormat("Industry Build Points: {0}\n", city.GetBuildPoints(Category.Industry));
             details.AppendFormat("Forestry Management Build Points: {0}\n\n", city.GetBuildPoints(Category.ForestryManagement));
 
 
