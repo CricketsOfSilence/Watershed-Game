@@ -58,6 +58,14 @@ namespace Watershed_Calculations
         Empty
     };
 
+    public enum EcoDamage
+    {
+        SoilLoss = 0,
+        ImperviousSurface,
+        Pollution,
+        WaterUsage
+    }
+
     public static class CategoryExtensions
     {
         public static Category ConvertToCategory(String s)

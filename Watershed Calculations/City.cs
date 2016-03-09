@@ -57,35 +57,35 @@ namespace Watershed_Calculations
         {
             StringBuilder cityFormat = new StringBuilder();
 
-            for (int i = 0; i < 5; i++)
+            Queue<String> buildingsBuilt = new Queue<String>();
+
+            foreach (Building b in city)
             {
-                cityFormat.Append("| ");
-                if (city.Count > 0 + (i * 5))
+                for (int i = 0; i < b.Hexes; i++)
                 {
-                    cityFormat.AppendFormat("{0} ", city[0 + (i * 5)].ToString());
+                    buildingsBuilt.Enqueue(b.Name);
                 }
-                cityFormat.Append("| ");
-                if (city.Count > 1 + (i * 5))
-                {
-                    cityFormat.AppendFormat("{0} ", city[1 + (i * 5)].ToString());
-                }
-                cityFormat.Append("| ");
-                if (city.Count > 2 + (i * 5))
-                {
-                    cityFormat.AppendFormat("{0} ", city[2 + (i * 5)].ToString());
-                }
-                cityFormat.Append("| ");
-                if (city.Count > 3 + (i * 5))
-                {
-                    cityFormat.AppendFormat("{0} ", city[3 + (i * 5)].ToString());
-                }
-                cityFormat.Append("| ");
-                if (city.Count > 4 + (i * 5))
-                {
-                    cityFormat.AppendFormat("{0} ", city[4 + (i * 5)].ToString());
-                }
-                cityFormat.AppendLine("|");
             }
+            
+            for (int i = buildingsBuilt.Count; i < 30; i++)
+            {
+                buildingsBuilt.Enqueue(String.Empty);
+            }
+
+            int index = 1;
+            foreach (String s in buildingsBuilt)
+            {
+                cityFormat.AppendFormat("| {0} ", s);
+                if (index % 5 == 0)
+                {
+                    index = 0;
+                    cityFormat.AppendLine("|");
+                }
+                index++;
+            }
+
+            buildingsBuilt.Clear();
+            buildingsBuilt = null;
 
             return cityFormat.ToString();
         }
@@ -152,7 +152,7 @@ namespace Watershed_Calculations
             return leftoverBP;
         }
 
-        private double GetSoilLoss()
+        public double GetSoilLoss()
         {
             double soilLoss = 0.0;
             double mitigation = 0.0;
@@ -171,7 +171,7 @@ namespace Watershed_Calculations
             return soilLoss + (soilLoss * mitigation);
         }
 
-        private double GetWaterUsage()
+        public double GetWaterUsage()
         {
             double waterUsage = 0.0;
             double mitigation = 0.0;
@@ -189,7 +189,7 @@ namespace Watershed_Calculations
             return waterUsage + (waterUsage * mitigation);
         }
 
-        private double GetImperviousSurface()
+        public double GetImperviousSurface()
         {
             double imperviousSurface = 0.0;
             double mitigation = 0.0;
@@ -207,7 +207,7 @@ namespace Watershed_Calculations
             return imperviousSurface + (imperviousSurface * mitigation);
         }
 
-        private double GetPollution()
+        public double GetPollution()
         {
             double pollution = 0.0;
             double mitigation = 0.0;
@@ -230,10 +230,7 @@ namespace Watershed_Calculations
             bool built = false;
             if (building != null && CanBuild(building, GetMinOtherBuildPoints(building.Category), GetBuildPoints(building.Category)))
             {
-                for (int i = 0; i < building.Hexes; i++)
-                {
-                    city.Add(building);
-                }
+                city.Add(building);
                 built = true;
             }
 

@@ -78,7 +78,7 @@ namespace Watershed_Calculations
             turn++;
         }
 
-        public String GetCityDetails()
+        public String DisplayCityDetails()
         {
             StringBuilder details = new StringBuilder();            
 
@@ -87,7 +87,6 @@ namespace Watershed_Calculations
             details.AppendFormat("Residential Build Points: {0}\n", city.GetBuildPoints(Category.Residential));
             details.AppendFormat("Industry Build Points: {0}\n", city.GetBuildPoints(Category.Industry));
             details.AppendFormat("Forestry Management Build Points: {0}\n\n", city.GetBuildPoints(Category.ForestryManagement));
-
 
             details.AppendFormat("Total Build Points: {0}\n", city.GetAllBuildPoints());
             details.AppendFormat("Ecosystem Health: {0}\n", city.GetEcosystemHealth());
@@ -107,6 +106,22 @@ namespace Watershed_Calculations
                 }
             }
             return 4 - buildingsBuilt;
+        }
+
+        public String DisplayEcoDetails()
+        {
+            StringBuilder details = new StringBuilder();
+
+            details.AppendFormat("Impervious Surface: {0}\nWater Usage: {1}\nPollution: {2}\nSoil Loss: {3}\n\n", city.GetImperviousSurface(), city.GetWaterUsage(), city.GetPollution(), city.GetSoilLoss());
+
+            double streamFlow = city.GetImperviousSurface() + city.GetWaterUsage();
+            double waterPollution = city.GetImperviousSurface() + city.GetPollution() + city.GetSoilLoss();
+            double speciesDeath = city.GetImperviousSurface() + city.GetSoilLoss() + city.GetPollution();
+            double waterTemp = city.GetPollution() + city.GetImperviousSurface();
+
+            details.AppendFormat("Stream Flow: {0}\nWater Pollution: {1}\nSpecies Death: {2}\nWater Temperature: {3}", streamFlow, waterPollution, speciesDeath, waterTemp);
+
+            return details.ToString();
         }
 
         /// <summary>
