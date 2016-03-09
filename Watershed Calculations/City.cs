@@ -121,7 +121,10 @@ namespace Watershed_Calculations
                 totalBuiltHexes += b.Hexes;
             }
 
-            if (( ( building.IsUnique && city.Exists(b => b.Name.Equals(building.Name)) ) && totalBuiltHexes < citySize))
+            bool buildingAlreadyExists = city.Exists(b => b.Name.Equals(building.Name));
+            bool hasMinBP = GetBuildPoints(building.Category) >= 2;
+            
+            if (building.IsUnique && (!buildingAlreadyExists && !hasMinBP) && totalBuiltHexes < citySize)
             {
                 return false;
             }
@@ -236,7 +239,6 @@ namespace Watershed_Calculations
 
             return built;
         }
-
 
         /// <summary>
         /// sf = is + wu
