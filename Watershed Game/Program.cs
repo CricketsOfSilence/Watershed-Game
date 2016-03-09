@@ -53,7 +53,7 @@ namespace Watershed_Game
                     case "n":
                     case "next":                        
                         gameBoard.NextTurn();
-                        Console.Out.WriteLine(gameBoard.GetCityDetails());
+                        Console.Out.WriteLine(gameBoard.DisplayCityDetails());
                         break;
                     case "r":
                     case "reset":
@@ -61,7 +61,11 @@ namespace Watershed_Game
                         break;
                     case "p":
                     case "points":
-                        Console.Out.WriteLine(gameBoard.GetCityDetails());
+                        Console.Out.WriteLine(gameBoard.DisplayCityDetails());
+                        break;
+                    case "e":
+                    case "ecosystem":
+                        Console.Out.WriteLine(gameBoard.DisplayEcoDetails());
                         break;
                     case "h":
                     case "help":
@@ -73,6 +77,7 @@ namespace Watershed_Game
                         h.AppendFormat("\t next | n\n");
                         h.AppendFormat("\t reset | r\n");
                         h.AppendFormat("\t points | p\n");
+                        h.AppendFormat("\t ecosystem | e\n");
                         h.AppendFormat("\t help | h\n");
                         Console.Out.WriteLine(h.ToString());
                         break;
